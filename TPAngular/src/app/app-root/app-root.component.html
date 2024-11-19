@@ -1,0 +1,23 @@
+<h1 style="font-weight: bold; color: red;">TP Angular</h1>
+
+
+<div *ngIf="hotels.length > 0">
+  <h2 class="my-4">Liste des Hôtels</h2>
+
+
+  <div class="row">
+    <div *ngFor="let hotel of hotels" class="col-md-4 mb-4">
+      <div class="card">
+        <img [src]="hotel.imageUrl" alt="{{ hotel.name }}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.name }}</h5>
+          <h5 class="card-title">{{ hotel.prix }} Dinar</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="hotels.length === 0">
+  <p>Aucun data</p>
+</div>

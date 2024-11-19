@@ -1,0 +1,90 @@
+<h1 style="font-weight: bold; color: red;">TP Angular </h1>
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center text-primary mb-4">Ajouter un Hôtel</h2>
+    <form [formGroup]="hotelForm" (ngSubmit)="addHotel()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="id" class="form-label">
+            <i class="bi bi-key"></i> ID
+          </label>
+          <input id="id" type="number" formControlName="id" class="form-control" placeholder="Entrez l'ID de l'hôtel">
+          <div *ngIf="hotelForm.controls['id'].invalid && hotelForm.controls['id'].touched" class="text-danger">
+            L'ID est requis.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="name" class="form-label">
+            <i class="bi bi-building"></i> Nom de l'hôtel
+          </label>
+          <input id="name" formControlName="name" class="form-control" placeholder="Entrez le nom de l'hôtel">
+          <div *ngIf="hotelForm.controls['name'].invalid && hotelForm.controls['name'].touched" class="text-danger">
+            Le nom est requis.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">
+            <i class="bi bi-envelope"></i> Email
+          </label>
+          <input id="email" type="email" formControlName="email" class="form-control" placeholder="Entrez l'email">
+          <div *ngIf="hotelForm.controls['email'].invalid && hotelForm.controls['email'].touched" class="text-danger">
+            Un email valide est requis.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="imageFile" class="form-label">
+            <i class="bi bi-file-image"></i> Image
+          </label>
+          <input id="imageFile" type="file" (change)="onFileSelected($event)" class="form-control">
+          <div *ngIf="selectedFileError" class="text-danger">
+            Veuillez choisir un fichier image (.png ou .jpg).
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="price" class="form-label">
+            <i class="bi bi-currency-euro"></i> Prix
+          </label>
+          <input id="price" type="number" formControlName="price" class="form-control" placeholder="Entrez le prix">
+          <div *ngIf="hotelForm.controls['price'].invalid && hotelForm.controls['price'].touched" class="text-danger">
+            Le prix est requis et doit être positif.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-check">
+            <input type="checkbox" id="agreeToTerms" formControlName="agreeToTerms" class="form-check-input">
+            <label for="agreeToTerms" class="form-check-label">Agree to Terms and Conditions</label>
+            <div *ngIf="hotelForm.controls['agreeToTerms'].invalid && hotelForm.controls['agreeToTerms'].touched" class="text-danger">
+              Vous devez accepter les conditions.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg w-100 mt-3" [disabled]="hotelForm.invalid">
+        <i class="bi bi-plus-circle"></i> Ajouter l'hôtel
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<h2 class="mt-4" *ngIf="hotels.length > 0">Liste des Hôtels</h2>
+<div *ngIf="hotels.length === 0">Aucun data</div>
+
+<div class="row">
+  <div *ngFor="let hotel of hotels" class="col-md-4 mb-4">
+    <div class="card">
+      <img [src]="hotel.imageUrl" alt="{{ hotel.name }}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{ hotel.name }}</h5>
+        <p>Email: {{ hotel.email }}</p>
+        <p>Prix: {{ hotel.price }} €</p>
+      </div>
+    </div>
+  </div>
+</div>

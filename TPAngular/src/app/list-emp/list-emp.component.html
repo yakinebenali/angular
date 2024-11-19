@@ -1,0 +1,27 @@
+<h2 class="text-center">Liste des Employés</h2>
+
+<!-- Bouton Ajouter -->
+<button class="btn btn-primary mb-3" (click)="showAddEmployeeForm()">Ajouter un Employé</button>
+
+<!-- Tableau des employés -->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Poste</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.position }}</td>
+      <td>
+        <button class="btn btn-warning btn-sm" (click)="editEmployee(employee)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

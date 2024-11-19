@@ -1,0 +1,9 @@
+<h2>Modifier le Département</h2>
+
+<div class="form-group">
+  <label for="deptName">Nom du Département</label>
+  <input type="text" id="deptName" [(ngModel)]="department.name" class="form-control" placeholder="Nom du département" />
+</div>
+
+<button class="btn btn-success mt-3" (click)="updateDepartment()">Mettre à jour</button>
+<button class="btn btn-secondary mt-3" (click)="cancel()">Annuler</button>

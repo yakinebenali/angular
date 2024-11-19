@@ -1,0 +1,10 @@
+<div style="text-align: center;">
+  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Logo Angular" width="100">
+  <h1>Exercice 1</h1>
+  <p>La somme de 20 et 10 = {{ 20 + 10 }}</p>
+ <button (click)="afficherMessage()">Bouton</button>
+  <div style="margin-top: 20px;">
+    <input [(ngModel)]="saisie" placeholder="Entrez du texte" />
+    <p>Voici ce que tu as écrit: {{ saisie }}</p>
+  </div>
+</div>

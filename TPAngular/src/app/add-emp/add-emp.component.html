@@ -1,0 +1,35 @@
+<h2 class="text-center">Ajouter un Nouvel Employé</h2>
+
+<!-- Formulaire d'ajout d'un employé -->
+<form (ngSubmit)="saveEmployee()" #employeeForm="ngForm">
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="employee.name"
+      name="name"
+      class="form-control"
+      placeholder="Nom"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="department">Département</label>
+    <input
+      type="text"
+      id="department"
+      [(ngModel)]="employee.department"
+      name="department"
+      class="form-control"
+      placeholder="Département"
+      required
+    />
+  </div>
+
+  <button type="submit" class="btn btn-success mt-3" [disabled]="!employeeForm.form.valid">
+    Enregistrer
+  </button>
+  <button type="button" class="btn btn-secondary mt-3" (click)="cancel()">Annuler</button>
+</form>
